@@ -1,0 +1,71 @@
+<%- include('../includes/start.ejs') %>
+
+<%- include('../includes/navigation.ejs') %>
+
+<div class="container w-50 my-4">
+    <% if(errorMessage) { %>
+        <div class="text-danger"><%= errorMessage %></div>
+    <% } %>
+    <h2 class="text-success">Add Product</h2>
+    <form action="/admin/add-product" method="POST" enctype="multipart/form-data" novalidate>
+        <div class="row mb-3 my-2">
+            <div class="col-6">
+                <input type="text" class="form-control" value="<%= oldInput.pname %>" placeholder="Product Name" name="pname" required>
+            </div>
+            <div class="col-6">
+                <input type="text" class="form-control" value="<%= oldInput.pmodel %>" placeholder="Product Model" name="pmodel" required>
+            </div>
+        </div>
+        <!-- <div class="mb-3 my-2">
+          
+        </div> -->
+        
+        <div class="mb-3 my-2 row">
+            <div class="col-6">
+            <select class="form-select" name="pcategory"  required  >
+                <% allcat.map((category)=>{ %>
+                     <option  value="<%= category._id %>" <%= (oldInput.pcategory === category._id.toString()) ? 'selected' : '' %> ><%= category.title %></option>
+                <% }) %>
+                
+                <!-- <option value="Oneplus" <%= (oldInput.pbrand ==='Oneplus') ? 'selected' : '' %>>Oneplus</option>
+                <option value="Samsung" <%= (oldInput.pbrand ==='Samsung') ? 'selected' : '' %>>Samsung</option>
+                <option value="Motorola" <%= (oldInput.pbrand ==='Motorola') ? 'selected' : '' %>>Motorola</option>
+                <option value="Oppo" <%= (oldInput.pbrand ==='Oppo') ? 'selected' : '' %>>Oppo</option>
+                <option value="Vivo" <%= (oldInput.pbrand ==='Vivo') ? 'selected' : '' %>>Vivo</option>
+                <option value="Realme" <%= (oldInput.pbrand ==='Realme') ? 'selected' : '' %>>Realme</option> -->
+            </select> 
+            </div> 
+            <div class="col-6">
+            <select class="form-select" name="pbrand"  required  >
+                <option value="Apple" <%= (oldInput.pbrand ==='Apple') ? 'selected' : '' %>>Apple</option>
+                <option value="Oneplus" <%= (oldInput.pbrand ==='Oneplus') ? 'selected' : '' %>>Oneplus</option>
+                <option value="Samsung" <%= (oldInput.pbrand ==='Samsung') ? 'selected' : '' %>>Samsung</option>
+                <option value="Motorola" <%= (oldInput.pbrand ==='Motorola') ? 'selected' : '' %>>Motorola</option>
+                <option value="Oppo" <%= (oldInput.pbrand ==='Oppo') ? 'selected' : '' %>>Oppo</option>
+                <option value="Vivo" <%= (oldInput.pbrand ==='Vivo') ? 'selected' : '' %>>Vivo</option>
+                <option value="Realme" <%= (oldInput.pbrand ==='Realme') ? 'selected' : '' %>>Realme</option>
+            </select>   
+            </div>
+        </div>
+       
+        <div class="mb-3">
+            <input type="text" class="form-control" value="<%= oldInput.pprice %>" placeholder="Product Price" name="pprice" required>
+        </div>
+        
+        <div class="form-floating mb-3">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="pdes" required><%= oldInput.pdes %></textarea>
+            <label for="floatingTextarea2" class="text-secondary">Description</label>
+        </div>
+        <div class="mb-4 ">
+            <!-- <input type="text" class="form-control" value="<%= oldInput.pimage %>" placeholder="Image Url" name="pimage" required> -->
+            <input class="form-control" type="file" name="pimage">
+        </div>
+        <div class="d-flex justify-content-between my-3">
+            <button type="submit" class="btn btn-success ">Add</button>
+            <a href="/" class="btn btn-dark ">Back</a>
+        </div>
+        
+    </form>
+</div>
+ 
+<%- include('../includes/end.ejs') %>

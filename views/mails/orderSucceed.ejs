@@ -1,0 +1,84 @@
+<!-- <p>Hello <%=name %> , Your order request is pocessed successfully .</p>
+<h5>Order Details</h5>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Qty.</th>
+            <th>Total (Qty * Price)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% products.map(product=>{ %>
+            <tr>
+                <td><%= product.product._id %></td>
+                <td><%= product.product.title %></td>
+                <td><%= product.product.price %></td>
+                <td><%= product.quantity %></td>
+                <td><%= product.quantity * product.product.price %></td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table> -->
+<div style="background-color: #5F6571;margin: 0;padding: 0;">
+    <div style="margin:0% 3%;padding-top: 10px;padding-bottom: 20px;">
+        <p  style="background-color: cyan; font-size: 1.2rem;font-weight: 650;text-align: center;padding-top: 5px;padding-bottom: 5px;">MOBILE E-SHOP - ORDER RECEIPT</p>
+        <img width="100%" src="http://localhost:3000/images/mail_images/order_mail_img.jpg" alt="" height="50%">
+        <div style="background-color:#26282C; border:1px solid white ;" >
+            <p style="color: white;text-align: center; margin-top: 40px;"><span style="color:cyan">Hi, <%=name %> </span> <br> Your order request is pocessed successfully</p>
+            <p style="font-size: 35px;font-family: sans-serif;color: cyan;text-align: center;">Thanks for ordering 😊</p>
+            <p style="font-size: 20px;font-family: sans-serif;color: white;text-align: center;margin-bottom: 30px;">Here is your order details ⇓</p>
+        
+        <div  style="background-color:#26282c8b;overflow-x: auto;">
+            <table width="100%" cellspacing="0" cellpadding="15" style="border:1px solid white;text-align:center;">
+                <thead style="background-color: cyan;" >
+                    <tr >
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Qty.</th>
+                        <th>Total (Qty * Price)</th>
+                    </tr>
+                </thead>
+                <tbody  style="background-color: #26282c85;color:white;">
+                    <% products.map(product=>{ %>
+                        <tr>
+                            <td><%= product.product.title %></td>
+                            <td><%= product.product.price %></td>
+                            <td><%= product.quantity %></td>
+                            <td><%= product.quantity * product.product.price %></td>
+                        </tr>
+                    <% }) %>
+                   
+                    
+                </tbody>
+            </table>
+        </div>
+        <div >
+            <div style="border:1px solid white">
+                <div style="text-align: end;padding-top: 10px; padding-right: 15px;color: white;">
+                    <p ><strong>Grandtotal : Rs. <%= total %> </strong></p>
+                </div>
+            </div>
+        </div>
+        <p style="color: white; margin-top: 20px;text-align: center;">For more information visit our site <br> <a href="http://localhost:3000">www.mobile-e-shop.com</a></p>
+        <!-- <div style="text-align: center; margin-top: 10px;color:grey;">
+            <p ><strong>Receipt</strong></p>
+            <a href="#" style="background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer">Download Receipt ⇩</a>
+        </div> -->
+        <div style="text-align: center;color: grey;margin-top: 10px;">
+            <p style="font-size: 14px;">© 2022 MOBILE  E-SHOP | All rights reserved. <br> Ambedkar nagar  , indore .</p>
+        </div>
+    </div>
+    </div>
+    </div>

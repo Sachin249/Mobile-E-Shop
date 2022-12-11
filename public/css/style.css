@@ -1,0 +1,19 @@
+*{
+    margin:0;
+    padding: 0;
+    font-family: sans-serif;
+}
+body,html{
+    overflow-x: hidden;
+}
+.navbar{
+    background-color:rgb(109, 226, 109);
+}
+.navbar  ul li{
+   padding:0px 15px;
+}
+
+/* form */
+form .invalid-input{
+    border:1px solid red;
+}

@@ -1,0 +1,53 @@
+<%- include('../includes/start.ejs') %>
+
+<%- include('../includes/navigation.ejs') %>
+<div class=" my-4 d-flex justify-content-center">
+    <div class="btn-group ">
+        <% categories.map(category=>{ %>
+            <a href="/?category=<%= category._id %>" class="btn btn-outline-success btn-sm mx-2"><%= category.title %></a>
+        <% }) %>
+        
+    </div>
+</div>
+    <div class="card-box row d-flex justify-content-evenly my-4">
+        <% products.map(prod=>{ %>
+            <div class="card col-4 my-2 " style="width:320px;">
+                <img src="<%= prod.imgUrl %>" class="card-img-top my-2" alt="..." height="300px">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="card-title text-capitalize"><%= prod.title %></h5>
+                        <small class="text-success"><i>Rs.<%= prod.price %></i></small>
+                    </div>
+                    <!-- <p class="card-text text-secondary"><%= prod.description %></p> -->
+                </div>
+                <div class="mb-3 my-1 d-flex justify-content-between container">
+                    <% if(isAuthenticated) { %>
+                    <%- include('../includes/add-to-cart.ejs',{product: prod}) %>
+                    <% } %>
+                    <button class="btn btn-success">Details</button>
+                </div>
+               
+            </div>
+        <% }) %>
+        <% if(products.length > 0) { %>
+        <section class="pagination d-flex justify-content-center my-3">
+            <% if(currentPage !== 1 && previousPage !== 1) { %>
+            <a href="/?page=1" class="btn btn-outline-success mx-2 ">1</a>
+            <% } %>
+            <% if(hasPreviousPage) { %>
+                <a href="/?page=<%= previousPage %>" class="btn btn-outline-success mx-2 "><%= previousPage %></a>
+            <% } %>
+            <a href="/?page=<%= currentPage %>" class="btn btn-outline-success mx-2 active"><%= currentPage %></a>
+            <% if(hasNextPage) { %>
+                <a href="/?page=<%= nextPage %>" class="btn btn-outline-success mx-2 "><%= nextPage %></a>
+            <% } %>
+            <% if(lastPage !== currentPage && lastPage !== nextPage) { %>
+                <a href="/?page=<%= lastPage %>" class="btn btn-outline-success mx-2 "><%= lastPage %></a>
+            <% } %>
+        </section>
+        <% } else { %>
+            <small class="text-center">No products available of this category</small>
+        <% } %>
+    </div>
+
+<%- include('../includes/end.ejs') %>

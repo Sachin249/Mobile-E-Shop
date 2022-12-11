@@ -1,0 +1,53 @@
+<%- include('../includes/start.ejs') %>
+    <link rel="stylesheet" href="/css/cart.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main>
+            <% if (products.length > 0) { %>
+                <table class="table table-bordered table-sm  container  w-50 my-4 text-center shadow p-3 mb-5 bg-white rounded">
+                    <thead class="bg-warning text-light">
+                        <tr >
+                            <th>Product Name</th>
+                            <th>Product Quantity</th>
+                            <th>Product Price</th>
+                            <th>Total (Quantity * Price)</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <% products.forEach(p => { %>
+                        <tr>
+                            <td><%= p.productId.title %></td>
+                            <td><%= p.quantity %></td>
+                            <td><%= p.productId.price %></td>
+                            <td><%= p.quantity * p.productId.price %></td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                <h class="container d-flex justify-content-end "><small class="text-primary">Total Payable Amt :</small> <span class="">Rs.<%= totalSum %></span></h>
+                <hr class="container">
+                <div class="d-flex justify-content-center">
+                    <!-- <form action="/create-order" method="POST">
+                        <button type="submit" class="btn btn-outline-success">Order Now</button>
+                    </form> -->
+                    <button id="pay-btn" class="btn btn-outline-success">Pay Now</button>
+                    <script src="https://js.stripe.com/v3/"></script>
+                    <script>
+                        var stripe = Stripe('pk_test_51M17JXSAsRf6ztASVwixo5EAMJbxmp8F9YMsoi7fBELWBcccbvXBMxyO233whbXWkXIcVKBQQpHQn0v6rUCkK1ay00cV2HIrOO');
+                        var orderBtn = document.getElementById('pay-btn');
+                        orderBtn.addEventListener('click', function(){
+                            stripe.redirectToCheckout({
+                                sessionId: '<%= sessionId %>'
+                            })
+                        })
+                    </script>
+                </div>
+                
+                
+            <% } else { %>
+                <h1>No Products in Cart!</h1>
+            <% } %>
+        </main>
+        <%- include('../includes/end.ejs') %>

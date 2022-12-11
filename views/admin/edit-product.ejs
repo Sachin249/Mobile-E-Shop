@@ -1,0 +1,29 @@
+<%- include('../includes/start.ejs') %>
+
+<%- include('../includes/navigation.ejs') %>
+
+<div class="container w-50 my-4">
+    <h2 class="text-success">Edit Product</h2>
+    <form action="/admin/edit-product" method="POST" enctype="multipart/form-data">
+        <div class="mb-3 my-2">
+          <input type="text" class="form-control" placeholder="Product Name" name="pname" value="<%= product.title %>" required>
+        </div>
+        <div class="mb-3">
+            <input class="form-control" type="file" name="pimage">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Product Price" name="pprice" value="<%= product.price %>" required>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="pdes"  required><%= product.description %></textarea>
+        </div>
+        <div class="d-flex justify-content-between my-3">
+            <input type="hidden" name="productId" value="<%= product._id %>">
+            <button type="submit" class="btn btn-success ">Update</button>
+            <a href="/admin/admin-product" class="btn btn-dark ">Back</a>
+        </div>
+        
+    </form>
+</div>
+ 
+<%- include('../includes/end.ejs') %>

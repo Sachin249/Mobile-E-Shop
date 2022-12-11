@@ -1,0 +1,32 @@
+<%- include('../includes/start.ejs') %>
+
+<%- include('../includes/navigation.ejs') %>
+    <article class="card-box row d-flex justify-content-evenly my-4">
+        <% products.map(prod=>{ %>
+            
+                <div class="card col-4 my-2" style="width:320px;">
+                    <!-- <article> -->
+                        <img src="/<%= prod.imgUrl %>" class="card-img-top " alt="..." height="250px">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title"><%= prod.title %></h5>
+                                <small class="text-success"><i>Rs.<%= prod.price %></i></small>
+                            </div>
+                            <p class="card-text text-secondary"><%= prod.description %></p>
+                        </div>
+                        <div class="mb-3 my-2 d-flex justify-content-between container">
+                            
+                            <a class="btn btn-success" href="/admin/edit-product/<%= prod._id %>">Edit</a>
+                            <!-- <input type="hidden" name="productId" value="<%= prod._id %>" > -->
+                            <a class="btn btn-danger" href="/admin/delete-product/<%= prod._id %>">Delete</a>
+                            <!-- <button class="btn btn-danger" onclick="deleteProduct(this)">Delete</button> -->
+                        </div>
+                    <!-- </article> -->
+                </div>
+            
+        <% }) %>
+        
+    </article>
+
+<%- include('../includes/end.ejs') %>
+<script src="/js/admin.js"></script>
