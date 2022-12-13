@@ -12,17 +12,20 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const multer = require('multer');
 const shortid = require('shortid');
 const flash = require('connect-flash');
+require('dotenv').config();
+
+
 // mail server
 require('./mail/transporter');
 
 const app = express();
-const MONGO_URI ='mongodb://localhost:27017/tempShop'
+
 const store = new MongoDBStore({
-  uri :MONGO_URI,
+  uri :process.env.MONGO_URI,
   collections:'sessions'
 })
 
-mongoose.connect(MONGO_URI,{
+mongoose.connect(process.env.MONGO_URI,{
     useNewUrlParser: true,
     useUnifiedTopology: true
   })

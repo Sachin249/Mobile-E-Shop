@@ -6,7 +6,7 @@ const sendUserCreationEmail = async ({name,email}) =>{
     const data = await ejs.renderFile(templatePath,{name})
 
     const mainOptions = {
-        from : '"Mobile E-shop" sachinsensks999@gmail.com',
+        from : "Mobile E-shop",
         to:email,
         subject : 'Account Activated',
         html:data

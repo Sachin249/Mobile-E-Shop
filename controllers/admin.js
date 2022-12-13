@@ -3,7 +3,7 @@ const Category = require('../models/Category');
 const fileHelper = require('../util/file');
 // const mongoose = require('mongoose');
 
-const {validationResult} = require('express-validator/check');
+const {validationResult} = require('express-validator');
 exports.getAddProduct = (req,res) =>{
     Category.find()
     .then(category=>{

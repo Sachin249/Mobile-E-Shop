@@ -5,7 +5,7 @@ const sendResetPasswordEmail = async ({email,token}) =>{
     const templatePath = path.join(__dirname,'../views/mails/resetPassword.ejs');
     const data = await ejs.renderFile(templatePath,{email,token})
     const mainOptions = {
-        from : '"Mobile E-shop" sachinsensks999@gmail.com',
+        from : "Mobile E-shop",
         to:email,
         subject : 'Password Reset',
         html:data

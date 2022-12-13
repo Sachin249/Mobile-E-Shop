@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
-const { validationResult } = require('express-validator/check');
+const { validationResult } = require('express-validator');
 const User = require('../models/User');
 const sendUserCreationEmail = require('../mail/sendAccountCreationMail');
 const resetPasswordMail = require('../mail/resetPasswordMail');

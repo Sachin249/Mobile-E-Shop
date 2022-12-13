@@ -175,7 +175,7 @@ exports.postCartDeleteProduct = (req, res, next) => {
           },
           products: products
         });
-        console.log(products)
+        // console.log(products)
         return order.save();
       })
       .then(result => {
